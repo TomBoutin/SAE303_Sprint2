@@ -10,7 +10,7 @@ class Event {
     #person;
     #groups;
     #ressources;
-
+  
     constructor(id, summary, description, start, end, location) {
         this.#id = id;
         this.#summary = summary.slice(0, summary.lastIndexOf(','));
@@ -19,43 +19,43 @@ class Event {
         this.#end = new Date(end);
         this.#location = location;
         this.#ressources = summary.slice(summary.lastIndexOf(',') + 1);
-
+  
         this.#groups = summary.slice(summary.lastIndexOf(',') + 1);
         this.#groups = this.#groups.split('.');
         this.#groups = this.#groups.map(gr => gr.replace(/\s/g, ""));
-
+  
         const matchperson = this.#summary.match(/^.*\d (.*)/);
         this.#person = matchperson ? matchperson[1].toLowerCase() : null;
     }
-
+  
     get id() {
         return this.#id;
     }
-
+  
     get summary() {
         return this.#summary;
     }
-
+  
     get description() {
         return this.#description;
     }
-
+  
     get start() {
         return this.#start;
     }
-
+  
     get end() {
         return this.#end;
     }
-
+  
     get location() {
         return this.#location;
     }
-
+  
     get groups() {
         return this.#groups.map(gr => gr); // retourne une copie du tableau
     }
-
+  
     // retourne le type de l'événement (CM, TD, TP) en fonction du titre
     get type() {
         let typeEvent = ["CM", "TD", "TP"];
@@ -66,28 +66,28 @@ class Event {
             }
         }
         return type;
-
+  
     }
-
+  
     get hours() {
         if (this.#start && this.#end) {
             let startDate = this.#start;
             let endDate = this.#end;
             let timeDifference = endDate.getTime() - startDate.getTime();
             let hoursDifference = timeDifference / (1000 * 3600);
-
+  
             return hoursDifference;
         } else {
             return null;
         }
     }
-
-
+  
+  
     get person() {
         return this.#person;
     }
-
-
+  
+  
     get semester() {
         let regex;
         if (this.#summary.startsWith('SAÉ')) {
@@ -97,7 +97,7 @@ class Event {
         } else {
             return 'Non spécifié';
         }
-
+  
         let match = this.#summary.match(regex);
         if (match && match[1]) {
             return match[1];
@@ -105,15 +105,27 @@ class Event {
             return 'Non spécifié';
         }
     }
-
+  
+    get day() {
+      const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+      const startDay = this.#start.toString().substring(0, 3); // Récupérer les trois premières lettres du jour
+      const dayIndex = daysOfWeek.indexOf(startDay);
+      return dayIndex !== -1 ? dayIndex : 'Non spécifié';
+  }
+  
     get ressources() {
-        let ressources = this.#summary.split(" ");
-        let ressources2 = ressources[0] + " " + ressources[1];
-        return ressources2;
+        let regex = /^(R|(SA))[EÉ ]{0,2}[1-6](\.Crea)?(\.DWeb-DI)?\.[0-9]{2}/;
+  
+        let match = this.#summary.match(regex);
+        if (match && match[0]) {
+          return match[0];
+        } else {
+          return 'Non spécifié';
+        }
     }
-
+  
     
-
+  
     // retourne un objet contenant les informations de l'événement
     // dans un format compatible avec Toast UI Calendar (voir https://nhn.github.io/tui.calendar/latest/EventObject)
     toObject() {
@@ -129,9 +141,10 @@ class Event {
             person : this.person,
             ressources : this.ressources,
             hours : this.hours,
-            semester : this.semester
+            semester : this.semester,
+            day : this.day
         }
     }
-}
-
-export { Event };
+  }
+  
+  export { Event };
