@@ -14,6 +14,10 @@
         font-family: "Montserrat", sans-serif;
       }
 
+      body {
+        background: #100C2A;
+      }
+
       .select {
         display: flex;
         margin: 1rem 0 1rem 3rem;
@@ -25,31 +29,66 @@
         padding: 0 10px;
         font-size: 14px;
         border-radius: 5px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 10px hsla(0, 0%, 100%, 0.3);
+        cursor: pointer;
+        margin-top: 5rem;
+        margin-left: 5rem;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding-bottom: 2rem;
+        margin-top: 5rem;
+      }
+
+      .diagramme1 {
+        padding-left: 2rem;
+        border-radius: 5px;
+        margin-left: 3rem;
+
+      }
+
+      .diagramme2 {
+        padding-left: 2rem;
+        border-radius: 5px;
+        margin-right: 3rem;
+
+      }
+
+      .diagramme3 {
+        padding-left: 2rem;
+        border-radius: 5px;
+        margin-left: 3rem;
+        margin-right: 3rem;
       }
     </style>
   </head>
+  <body>
+    <select name="semestre" id="semestre" class="select sel1">
+      <option value="0">Tous les semestres</option>
+      <option value="1">Semestre 1</option>
+      <option value="2">Semestre 2</option>
+      <option value="3">Semestre 3</option>
+      <option value="4">Semestre 4</option>
+      <option value="5">Semestre 5</option>
+      <option value="6">Semestre 6</option>
+    </select>
 
-  <!-- <body>
-    <select name="semestre" id="semestre" class="select">
+    <div id="bar-charts" class="diagramme3" style="width: 100%; height: 100vh"></div>
 
-  <option value="0">Tous les semestres</option>
-  <option value="1">Semestre 1</option>
-  <option value="2">Semestre 2</option>
-  <option value="3">Semestre 3</option>
-  <option value="4">Semestre 4</option>
-  <option value="5">Semestre 5</option>
-  <option value="6">Semestre 6</option>
 
-</select> -->
-
-    <select name="intervenant" id="intervenant" class="select">
+    <select name="intervenant" id="intervenant" class="select sel2">
       <option value="ADAM Fabrice">ADAM Fabrice</option>
       <option value="ADAMCZYK Natacha">ADAMCZYK Natacha</option>
       <option value="AYMARD Adrien">AYMARD Adrien</option>
       <option value="AYMARD Alain">AYMARD Alain</option>
       <option value="BABIN Valentin">BABIN Valentin</option>
       <option value="BERTHIER Hélène">BERTHIER Hélène</option>
+      <option value="BONNAUD Lucile">BONNAUD Lucile</option>
       <option value="CHANTELOUP Amelin">CHANTELOUP Amelin</option>
       <option value="CHUPIN Suzanne">CHUPIN Suzanne</option>
       <option value="CREDEVILLE Maxime">CREDEVILLE Maxime</option>
@@ -80,6 +119,7 @@
       <option value="MONDOLLOT Rémi">MONDOLLOT Rémi</option>
       <option value="MORA Frédéric">MORA Frédéric</option>
       <option value="MOUTAT Audrey">MOUTAT Audrey</option>
+      <option value="MINIER Jules">MINIER Jules</option>
       <option value="NENIN Cédric">NENIN Cédric</option>
       <option value="PAILLIER Stéphane">PAILLIER Stéphane</option>
       <option value="PINAUD Anaïs">PINAUD Anaïs</option>
@@ -94,13 +134,14 @@
       <option value="VALETTE Sophie">VALETTE Sophie</option>
       <option value="VEILLON Pascal">VEILLON Pascal</option>
     </select>
+    
+    <div  class="container">    
+    <div id="sunburst-charts" class="diagramme2" style="width: 100%; height: 800px"></div>
+    <div id="heatmap-charts" class="diagramme1" style="width: 100%; height: 800px"></div>
 
-    <!-- <div id="bar-charts" style="width: 100%; height: 100vh"></div> -->
-    <!-- <div id="sunburst-charts" style="width: 100%; height: 100vh"></div>  -->
-    <div id="heatmap-charts" style="width: 100%; height: 100vh"></div>
-
-    <!-- <script type="module" src="/bar-charts.js"></script> -->
-    <!-- <script type="module" src="/sunburst-drink-charts.js"></script>  -->
+  </div>
     <script type="module" src="/heatmap-charts.js"></script>
+    <script type="module" src="/bar-charts.js"></script>
+    <script type="module" src="/sunburst-drink-charts.js"></script>
   </body>
 </html>
