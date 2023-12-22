@@ -1,147 +1,221 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MMI Calendar</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap");
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Montserrat", sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMI Calendar</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap");
 
-      body {
-        background: #100C2A;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Montserrat", sans-serif;
+    }
 
-      .select {
-        display: flex;
-        margin: 1rem 0 1rem 3rem;
-        z-index: 999;
-        height: 2.5rem;
-        border: none;
-        outline: none;
-        background: #fff;
-        padding: 0 10px;
-        font-size: 14px;
-        border-radius: 5px;
-        box-shadow: 0 5px 10px hsla(0, 0%, 100%, 0.3);
-        cursor: pointer;
-        margin-top: 5rem;
-        margin-left: 5rem;
-      }
+    body {
+      background: #100C2A;
+    }
 
-      .container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        padding-bottom: 2rem;
-        margin-top: 5rem;
-      }
+    .select {
+      display: flex;
+      z-index: 999;
+      height: 2.5rem;
+      border: none;
+      outline: none;
+      background: #fff;
+      padding: 0 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px hsla(0, 0%, 100%, 0.3);
+      cursor: pointer;
+      margin-left: 5rem;
+      margin-top: 1rem;
+    }
 
-      .diagramme1 {
-        padding-left: 2rem;
-        border-radius: 5px;
-        margin-left: 3rem;
-
-      }
-
-      .diagramme2 {
-        padding-left: 2rem;
-        border-radius: 5px;
-        margin-right: 3rem;
-
-      }
-
-      .diagramme3 {
-        padding-left: 2rem;
-        border-radius: 5px;
-        margin-left: 3rem;
-        margin-right: 3rem;
-      }
-    </style>
-  </head>
-  <body>
-    <select name="semestre" id="semestre" class="select sel1">
-      <option value="0">Tous les semestres</option>
-      <option value="1">Semestre 1</option>
-      <option value="2">Semestre 2</option>
-      <option value="3">Semestre 3</option>
-      <option value="4">Semestre 4</option>
-      <option value="5">Semestre 5</option>
-      <option value="6">Semestre 6</option>
-    </select>
-
-    <div id="bar-charts" class="diagramme3" style="width: 100%; height: 100vh"></div>
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
 
 
-    <select name="intervenant" id="intervenant" class="select sel2">
-      <option value="ADAM Fabrice">ADAM Fabrice</option>
-      <option value="ADAMCZYK Natacha">ADAMCZYK Natacha</option>
-      <option value="AYMARD Adrien">AYMARD Adrien</option>
-      <option value="AYMARD Alain">AYMARD Alain</option>
-      <option value="BABIN Valentin">BABIN Valentin</option>
-      <option value="BERTHIER Hélène">BERTHIER Hélène</option>
-      <option value="BONNAUD Lucile">BONNAUD Lucile</option>
-      <option value="CHANTELOUP Amelin">CHANTELOUP Amelin</option>
-      <option value="CHUPIN Suzanne">CHUPIN Suzanne</option>
-      <option value="CREDEVILLE Maxime">CREDEVILLE Maxime</option>
-      <option value="CRESPIN Benoit">CRESPIN Benoit</option>
-      <option value="DAL BELLO Marine">DAL BELLO Marine</option>
-      <option value="DEMAISON Guillaume">DEMAISON Guillaume</option>
-      <option value="DUBREUIL Anne-Sophie">DUBREUIL Anne-Sophie</option>
-      <option value="DULAC Benoit">DULAC Benoit</option>
-      <option value="FEYDI Philippe">FEYDI Philippe</option>
-      <option value="FIAMMETTI Deborah">FIAMMETTI Deborah</option>
-      <option value="FLITTI Eric">FLITTI Eric</option>
-      <option value="GERAUD Fabien">GERAUD Fabien</option>
-      <option value="GOUDARD Bérénice">GOUDARD Bérénice</option>
-      <option value="GRASSET Véronique">GRASSET Véronique</option>
-      <option value="GUEDIRA Réda">GUEDIRA Réda</option>
-      <option value="JARDOU Thomas">JARDOU Thomas</option>
-      <option value="JAUFFRET Manon">JAUFFRET Manon</option>
-      <option value="JOUY Maxime">JOUY Maxime</option>
-      <option value="KABAB Simon">KABAB Simon</option>
-      <option value="LAFONT Mathieu">LAFONT Mathieu</option>
-      <option value="LAVEFVE Valérie">LAVEFVE Valérie</option>
-      <option value="LASCAUD Raphaël">LASCAUD Raphaël</option>
-      <option value="LAZARE Jean-Cédric">LAZARE Jean-Cédric</option>
-      <option value="LE BAIL Emma">LE BAIL Emma</option>
-      <option value="LECOMTE Catherine">LECOMTE Catherine</option>
-      <option value="LU Inès">LU Inès</option>
-      <option value="MARTY Thomas">MARTY Thomas</option>
-      <option value="MONDOLLOT Rémi">MONDOLLOT Rémi</option>
-      <option value="MORA Frédéric">MORA Frédéric</option>
-      <option value="MOUTAT Audrey">MOUTAT Audrey</option>
-      <option value="MINIER Jules">MINIER Jules</option>
-      <option value="NENIN Cédric">NENIN Cédric</option>
-      <option value="PAILLIER Stéphane">PAILLIER Stéphane</option>
-      <option value="PINAUD Anaïs">PINAUD Anaïs</option>
-      <option value="PORRO Heinich">PORRO Heinich</option>
-      <option value="PORTAL Nicolas">PORTAL Nicolas</option>
-      <option value="SABOURIN Erwan">SABOURIN Erwan</option>
-      <option value="SINCLAIR Diego">SINCLAIR Diego</option>
-      <option value="SPRINGINSFELD Denis">SPRINGINSFELD Denis</option>
-      <option value="THARAUD Sébastien">THARAUD Sébastien</option>
-      <option value="TZVETKOVA Maria">TZVETKOVA Maria</option>
-      <option value="TURBELIN Pierre">TURBELIN Pierre</option>
-      <option value="VALETTE Sophie">VALETTE Sophie</option>
-      <option value="VEILLON Pascal">VEILLON Pascal</option>
-    </select>
-    
-    <div  class="container">    
-    <div id="sunburst-charts" class="diagramme2" style="width: 100%; height: 800px"></div>
-    <div id="heatmap-charts" class="diagramme1" style="width: 100%; height: 800px"></div>
+    .title {
+      text-align: center;
+      color: #fff;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
+    .title-chart {
+      text-align: center;
+      color: #fff;
+      margin-top: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .diagramme3 {
+      margin-bottom: 2rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #fff;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      
+    }
+
+    .container_container{
+      width: 100%;
+
+    }
+
+    @media screen and (max-width: 768px) {
+
+.container {
+  flex-direction: column;
+}
+
+.diagramme1 {
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.diagramme2 {
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.diagramme3 {
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.select{
+  display: flex;
+  margin: 1rem auto;
+  
+}
+
+.title-chart
+{
+  margin-top: 0;
+  font-size: .8rem;
+}
+
+.title{
+  margin-bottom: .5rem;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+}
+
+.subtitle{
+  margin-bottom: 1.5rem;
+}
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 class="title">SAE 3.03 - Data Visualization / Sprint 2</h1>
+  <h2 class="subtitle">Thème Intervenants</h2>
+
+  <h3 class="title-chart">Histogramme des heures de chaque intervants de MMI</h3>
+
+  <select name="semestre" id="semestre" class="select sel1">
+    <option value="0">Tous les semestres</option>
+    <option value="1">Semestre 1</option>
+    <option value="2">Semestre 2</option>
+    <option value="3">Semestre 3</option>
+    <option value="4">Semestre 4</option>
+    <option value="5">Semestre 5</option>
+    <option value="6">Semestre 6</option>
+  </select>
+
+  <div id="bar-charts" class="diagramme3" style="width: 100%; height: 100vh"></div>
+
+  
+
+
+  <select name="intervenant" id="intervenant" class="select sel2">
+    <option value="ADAM Fabrice">ADAM Fabrice</option>
+    <option value="ADAMCZYK Natacha">ADAMCZYK Natacha</option>
+    <option value="AYMARD Adrien">AYMARD Adrien</option>
+    <option value="AYMARD Alain">AYMARD Alain</option>
+    <option value="BABIN Valentin">BABIN Valentin</option>
+    <option value="BERTHIER Hélène">BERTHIER Hélène</option>
+    <option value="BONNAUD Lucile">BONNAUD Lucile</option>
+    <option value="CHANTELOUP Amelin">CHANTELOUP Amelin</option>
+    <option value="CHUPIN Suzanne">CHUPIN Suzanne</option>
+    <option value="CREDEVILLE Maxime">CREDEVILLE Maxime</option>
+    <option value="CRESPIN Benoit">CRESPIN Benoit</option>
+    <option value="DAL BELLO Marine">DAL BELLO Marine</option>
+    <option value="DEMAISON Guillaume">DEMAISON Guillaume</option>
+    <option value="DUBREUIL Anne-Sophie">DUBREUIL Anne-Sophie</option>
+    <option value="DULAC Benoit">DULAC Benoit</option>
+    <option value="FEYDI Philippe">FEYDI Philippe</option>
+    <option value="FIAMMETTI Deborah">FIAMMETTI Deborah</option>
+    <option value="FLITTI Eric">FLITTI Eric</option>
+    <option value="GERAUD Fabien">GERAUD Fabien</option>
+    <option value="GOUDARD Bérénice">GOUDARD Bérénice</option>
+    <option value="GRASSET Véronique">GRASSET Véronique</option>
+    <option value="GUEDIRA Réda">GUEDIRA Réda</option>
+    <option value="JARDOU Thomas">JARDOU Thomas</option>
+    <option value="JAUFFRET Manon">JAUFFRET Manon</option>
+    <option value="JOUY Maxime">JOUY Maxime</option>
+    <option value="KABAB Simon">KABAB Simon</option>
+    <option value="LAFONT Mathieu">LAFONT Mathieu</option>
+    <option value="LAVEFVE Valérie">LAVEFVE Valérie</option>
+    <option value="LASCAUD Raphaël">LASCAUD Raphaël</option>
+    <option value="LAZARE Jean-Cédric">LAZARE Jean-Cédric</option>
+    <option value="LE BAIL Emma">LE BAIL Emma</option>
+    <option value="LECOMTE Catherine">LECOMTE Catherine</option>
+    <option value="LU Inès">LU Inès</option>
+    <option value="MARTY Thomas">MARTY Thomas</option>
+    <option value="MONDOLLOT Rémi">MONDOLLOT Rémi</option>
+    <option value="MORA Frédéric">MORA Frédéric</option>
+    <option value="MOUTAT Audrey">MOUTAT Audrey</option>
+    <option value="MINIER Jules">MINIER Jules</option>
+    <option value="NENIN Cédric">NENIN Cédric</option>
+    <option value="PAILLIER Stéphane">PAILLIER Stéphane</option>
+    <option value="PINAUD Anaïs">PINAUD Anaïs</option>
+    <option value="PORRO Heinich">PORRO Heinich</option>
+    <option value="PORTAL Nicolas">PORTAL Nicolas</option>
+    <option value="SABOURIN Erwan">SABOURIN Erwan</option>
+    <option value="SINCLAIR Diego">SINCLAIR Diego</option>
+    <option value="SPRINGINSFELD Denis">SPRINGINSFELD Denis</option>
+    <option value="THARAUD Sébastien">THARAUD Sébastien</option>
+    <option value="TZVETKOVA Maria">TZVETKOVA Maria</option>
+    <option value="TURBELIN Pierre">TURBELIN Pierre</option>
+    <option value="VALETTE Sophie">VALETTE Sophie</option>
+    <option value="VEILLON Pascal">VEILLON Pascal</option>
+  </select>
+
+  <div class="container">
+    <div class="container_container">
+ <h3 class="title-chart">Diagramme visualisant le service d'un intervenant</h3>
+      <div id="sunburst-charts" class="diagramme2" style="width: 100%; height: 600px"></div>
+    </div>
+    <div class="container_container">
+      <h3 class="title-chart">Heatmap de la répartition des heures d'un intervenant</h3>
+      <div id="heatmap-charts" class="diagramme1" style="width: 100%; height: 600px"></div>
+
+    </div>
   </div>
-    <script type="module" src="/heatmap-charts.js"></script>
-    <script type="module" src="/bar-charts.js"></script>
-    <script type="module" src="/sunburst-drink-charts.js"></script>
-  </body>
+
+  <script type="module" src="/heatmap-charts.js"></script>
+  <script type="module" src="/bar-charts.js"></script>
+  <script type="module" src="/sunburst-drink-charts.js"></script>
+</body>
+
 </html>

@@ -23,8 +23,9 @@ for (let ev of tab) {
 
     allProf[ev]["Semestre " + i] = {};
 
-    // Supposons que 'resources' est un tableau de tous les cours possibles
-    let resources = [...new Set(semesterEvents.map(event => event.ressources))];
+    let allResources = semesterEvents.map(event => event.ressources);
+    let uniqueResourcesSet = new Set(allResources);
+    let resources = Array.from(uniqueResourcesSet);
 
     for (let resource of resources) {
       let resourceEvents = semesterEvents.filter((event) => { return event.ressources === resource });
